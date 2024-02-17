@@ -1,0 +1,138 @@
+[
+{
+  "model": "app.prize",
+  "pk": 1,
+  "fields": {
+    "label": "PRIZE 01 - 3 DIAMONDS",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 2,
+  "fields": {
+    "label": "PRIZE 02 - 2 DIAMONDS",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 3,
+  "fields": {
+    "label": "PRIZE 03 - 1 DIAMOND",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 4,
+  "fields": {
+    "label": "PRIZE 04 - 3 DOLLARS",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 5,
+  "fields": {
+    "label": "PRIZE 05 - 3 BARS",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 6,
+  "fields": {
+    "label": "PRIZE 06 - 3 SEVENS",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 7,
+  "fields": {
+    "label": "PRIZE 07 - 3 BELLS",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 8,
+  "fields": {
+    "label": "PRIZE 08 - 3 HORSESHOES",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 9,
+  "fields": {
+    "label": "PRIZE 09 - 3 LEAFS",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 10,
+  "fields": {
+    "label": "PRIZE 10 - 3 HEARTS",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 11,
+  "fields": {
+    "label": "PRIZE 11 - 3 WATERMELONS",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 12,
+  "fields": {
+    "label": "PRIZE 12 - 3 CHERRIES",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 13,
+  "fields": {
+    "label": "PRIZE 13 - 3 GRAPES",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 14,
+  "fields": {
+    "label": "PRIZE 14 - 3 LEMONS",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 15,
+  "fields": {
+    "label": "PRIZE 15 - 3 ORANGES",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 16,
+  "fields": {
+    "label": "PRIZE 16 - 3 BANANAS",
+    "winner": true
+  }
+},
+{
+  "model": "app.prize",
+  "pk": 17,
+  "fields": {
+    "label": "LOSE",
+    "winner": false
+  }
+}
+]

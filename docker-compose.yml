@@ -1,0 +1,55 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: db
+      POSTGRES_PASSWORD: fiuhdbtr98
+      POSTGRES_DB: db
+
+  fruit_machine:
+    build: .
+    command: "python manage.py collectstatic --noinput && python manage.py migrate && gunicorn core.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - '.:/code'
+      - static_volume:/code/staticfiles
+    env_file:
+      - .env
+    environment:
+      - DB_NAME=db
+      - DB_USER=db
+      - DB_PASS=fiuhdbtr98
+      - DB_SERVICE=db
+      - DB_PORT=5432
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - static_volume:/code/static
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    depends_on:
+      - fruit_machine
+    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    depends_on:
+      - nginx
+
+volumes:
+  postgres_data:
+  static_volume:
