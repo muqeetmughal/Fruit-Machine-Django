@@ -35,7 +35,7 @@ services:
       - db
 
   nginx:
-    image: nginx:alpine
+    image: jonasal/nginx-certbot:latest
     ports:
       - '80:80'
       - '443:443'
@@ -43,10 +43,27 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/conf:/etc/nginx/conf.d
       - static_volume:/code/static
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - dh-param:/etc/ssl/certs
+    environment:
+      - CERTBOT_EMAIL=your_email@example.com
     depends_on:
       - fruit_machine
+
+  # nginx:
+  #   image: nginx:alpine
+  #   ports:
+  #     - '80:80'
+  #     - '443:443'
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+  #     - ./nginx/conf:/etc/nginx/conf.d
+  #     - static_volume:/code/static
+  #     - ./certbot/conf:/etc/letsencrypt
+  #     - ./certbot/www:/var/www/certbot
+  #   depends_on:
+  #     - fruit_machine
 
   certbot:
     image: certbot/certbot
@@ -57,6 +74,13 @@ services:
     depends_on:
       - nginx
 
+# volumes:
+#   postgres_data:
+#   static_volume:
+
 volumes:
   postgres_data:
   static_volume:
+  certbot-etc:
+  certbot-var:
+  dh-param:
