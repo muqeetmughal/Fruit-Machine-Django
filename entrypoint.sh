@@ -1,11 +1,14 @@
+#!/bin/bash -x
+
 #Run migrations
-python manage.py migrate
+python manage.py migrate --noinput || exit 1
+exec "$@"
 
 #run tests
 # python manage.py test
 
 # run collect statics
-python manage.py collectstatic
+python manage.py collectstatic --noinput || exit 1
 
 echo 'COLLECT STAIIC DONE ********'
 # Start server
