@@ -1,15 +1,15 @@
 version: '3'
 
 services:
-  db:
-    image: postgres:latest
-    restart: unless-stopped
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: db
-      POSTGRES_PASSWORD: fiuhdbtr98
-      POSTGRES_DB: db
+  # db:
+  #   image: postgres:latest
+  #   restart: unless-stopped
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   environment:
+  #     POSTGRES_USER: db
+  #     POSTGRES_PASSWORD: fiuhdbtr98
+  #     POSTGRES_DB: db
 
   fruit_machine:
     build: .
