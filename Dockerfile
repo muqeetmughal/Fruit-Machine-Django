@@ -16,4 +16,4 @@ LABEL maintainer="Muqeet Mughal <muqeetmughal786@gmail.com>"
 # Run server
 # CMD python manage.py runserver 0.0.0.0:8000
 # CMD gunicorn -c gunicorn.py "core.wsgi:application"
-CMD ["bash", "./entrypoint.sh"]
+ENTRYPOINT [ "/entrypoint.sh" ]
