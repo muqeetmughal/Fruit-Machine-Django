@@ -34,20 +34,36 @@ services:
     depends_on:
       - db
 
+  # nginx:
+  #   image: jonasal/nginx-certbot:latest
+  #   ports:
+  #     - '80:80'
+  #     - '443:443'
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+  #     - ./nginx/conf:/etc/nginx/conf.d
+  #     - static_volume:/code/static
+  #     - certbot-etc:/etc/letsencrypt
+  #     - certbot-var:/var/lib/letsencrypt
+  #     - dh-param:/etc/ssl/certs
+  #   environment:
+  #     - CERTBOT_EMAIL=your_email@example.com
+  #   depends_on:
+  #     - fruit_machine
+
   nginx:
     image: jonasal/nginx-certbot:latest
+    restart: unless-stopped
+    env_file:
+      - .env
     ports:
-      - '80:80'
-      - '443:443'
+      - 80:80
+      - 443:443
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/conf:/etc/nginx/conf.d
       - static_volume:/code/static
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - dh-param:/etc/ssl/certs
-    environment:
-      - CERTBOT_EMAIL=your_email@example.com
+      - nginx_secrets:/etc/letsencrypt
     depends_on:
       - fruit_machine
 
@@ -81,6 +97,4 @@ services:
 volumes:
   postgres_data:
   static_volume:
-  certbot-etc:
-  certbot-var:
-  dh-param:
+  nginx_secrets:
