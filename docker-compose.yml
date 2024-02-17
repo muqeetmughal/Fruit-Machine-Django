@@ -31,14 +31,12 @@ services:
       - static_volume:/code/static
     env_file:
       - .env
-    environment:
-      - DB_NAME=db
-      - DB_USER=db
-      - DB_PASS=fiuhdbtr98
-      - DB_SERVICE=db
-      - DB_PORT=5432
-    depends_on:
-      - db
+    # environment:
+    #   - DB_NAME=db
+    #   - DB_USER=db
+    #   - DB_PASS=fiuhdbtr98
+    #   - DB_SERVICE=db
+    #   - DB_PORT=5432
 
   nginx:
     restart: unless-stopped
