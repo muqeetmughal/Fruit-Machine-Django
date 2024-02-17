@@ -36,7 +36,7 @@ class UniqueCode(models.Model):
     Class to create human friendly gift/coupon/voucher codes.
     """
     # Model field for our unique code
-    code = models.CharField(max_length=8, blank=True, null=True, unique=True, default="Automatic Generated", editable=False)
+    code = models.CharField(max_length=15, blank=True, null=True, unique=True, default="Automatic Generated", editable=False)
     used = models.BooleanField(default=False)
     date = models.DateTimeField(blank=True, null=True, auto_now_add=True)
 
