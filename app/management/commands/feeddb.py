@@ -13,10 +13,6 @@ User = get_user_model()
 class Command(BaseCommand):
     def handle(self, *args, **options):
         self.init_super_admin()
-        self.assign_permissions_to_group()
-        self.create_public_tenant()
-        self.create_default_tenants()
-        call_command("scrape_countries")
 
 
     def init_super_admin(self):
@@ -34,9 +30,3 @@ class Command(BaseCommand):
             admin.save()
         else:
             print("Admin accounts can only be initialized if no Accounts exist")
-
-    # def create_units(self):
-    #     print("Initializing Units")
-    #     client_models.Unit.objects.get_or_create(name="Kilogram", code="kg")
-    #     client_models.Unit.objects.get_or_create(name="Unit", code="unit")
-    #     client_models.Unit.objects.get_or_create(name=" ", code="pcs")
