@@ -9,7 +9,6 @@ WORKDIR /code
 COPY requirements.txt requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN chmod +x entrypoint.sh
 COPY . .
 
 LABEL maintainer="Muqeet Mughal <muqeetmughal786@gmail.com>"
