@@ -3,6 +3,7 @@ version: '3'
 services:
   db:
     image: postgres:latest
+    restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
@@ -20,6 +21,7 @@ services:
              gunicorn core.wsgi:application --bind 0.0.0.0:8100"
     ports:
       - "8100:8100"
+    restart: unless-stopped
     volumes:
       - '.:/code'
       - static_volume:/code/static
@@ -35,6 +37,7 @@ services:
       - db
 
   nginx:
+    restart: unless-stopped
     image: nginx:alpine
     ports:
       - '80:80'
