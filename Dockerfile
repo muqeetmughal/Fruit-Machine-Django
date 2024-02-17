@@ -1,7 +1,7 @@
 FROM python:3.8.5
 
 # Install packages to complie
-RUN apk install make gcc g++ libc-dev
+RUN apt install make gcc g++ libc-dev
 
 WORKDIR /code
 
